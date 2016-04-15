@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<!-- title -->
+		<title>Template</title>
+
+		<!-- metas -->
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- main css -->
+		<link rel="stylesheet" href="loading.css" />
+
+		<!-- Vuejs styles -->
+		<style type="text/css">
+			[v-cloak], .spinner {
+				display: none;
+			}
+
+			[v-cloak].spinner {
+				display: block;
+			}
+		</style>
+
+	</head>
+	<body>
+
+        <div class="spinner" v-cloak></div>
+
+		<div id="Project-Name" class="main" v-cloak>
+            <!-- <router-view></router-view> -->
+            {{ !loading }}
+		</div>
+
+		<script src="jspm_packages/system.js"></script>
+		<script src="config.js"></script>
+		<script>
+			System.import('app/main.js');
+		</script>
+	</body>
+</html>
