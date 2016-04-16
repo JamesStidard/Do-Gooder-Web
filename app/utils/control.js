@@ -1,4 +1,4 @@
-import docCookies from "app/utils/cookies"
+import docCookies from "./cookies"
 
 export default class Control{
     constructor(app, url) {

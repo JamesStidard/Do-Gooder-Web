@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import {debug} from 'consts'
+import {debug} from '../consts'
 
 
 Vue.use(VueRouter)

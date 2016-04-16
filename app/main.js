@@ -2,10 +2,10 @@ import './main.css!'
 
 import router from './router'
 
-import {ws_url} from 'consts'
-import Control from 'app/utils/control'
+import {ws_url} from '../consts'
+import Control from './utils/control'
 
-import ChallengePanel from 'app/components/challenge-panel/challenge'
+import ChallengePanel from './components/challenge-panel/challenge'
 
 
 router.start({
