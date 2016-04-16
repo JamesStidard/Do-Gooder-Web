@@ -1,0 +1,9 @@
+<div class='ChallengePanel'>
+    <div v-if='error'>
+        ERROR: {{ error }}
+    </div>
+
+    <div v-for='deed in deeds' track-by='id'>
+        {{ deed.description }}
+    </div>
+</div>

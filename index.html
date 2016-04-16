@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 		<!-- title -->
-		<title>Template</title>
+		<title>Do Gooder</title>
 
 		<!-- metas -->
 		<meta charset="utf-8" />
@@ -28,9 +28,10 @@
 
         <div class="spinner" v-cloak></div>
 
-		<div id="Project-Name" class="main" v-cloak>
-            <!-- <router-view></router-view> -->
-            {{ !loading }}
+		<div id="Do-Gooder" class="main" v-cloak>
+            <template v-if='loaded'>
+                <challenge-panel :control='control'></challenge-panel>
+            </template>
 		</div>
 
 		<script src="jspm_packages/system.js"></script>
