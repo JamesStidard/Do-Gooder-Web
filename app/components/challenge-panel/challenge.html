@@ -5,5 +5,8 @@
 
     <div v-for='deed in deeds' track-by='id'>
         {{ deed.description }}
+        {{ deed.id }}
     </div>
+
+    <input placeholder="Add Deed" v-model='new_deed.description' @keyup.enter='add_deed'/>
 </div>

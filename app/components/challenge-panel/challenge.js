@@ -11,6 +11,9 @@ export default Vue.extend({
         return {
             error: '',
             deeds: [],
+            new_deed: {
+                description:''
+            },
         }
     },
     computed: {
@@ -29,6 +32,12 @@ export default Vue.extend({
                 this.error = "Couldn't parse server reponse."
             }
         },
+        add_deed() {
+            this.control.send('insert_deed', this.new_deed, this.added_deed)
+        }
+        added_deed(request, response) {
+            this.new_deed.description=''
+        }
     },
     events: {
         insert_deed(deed) {
