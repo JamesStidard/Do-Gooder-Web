@@ -16,3 +16,8 @@
 input {
     width: 100%;
 }
+
+.AdminPanel
+.error {
+    color: red;
+}

@@ -8,6 +8,11 @@
     font-size: 2em;
     font-weight: bold;
     text-align: center;
-    color:black;
+    color: black;
     line-height: 200%;
-};
+}
+
+.ChallengePanel
+.error {
+    color: red;
+}

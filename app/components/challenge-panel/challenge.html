@@ -1,9 +1,11 @@
 <div class='ChallengePanel'>
-    <div v-if='error'>
+    <div v-if='error' class='error'>
         ERROR: {{ error }}
     </div>
 
     <div v-for='deed in deeds' track-by='id'>
-        {{ deed.description }}
+        <div class='description'>{{ deed.description }}</div>
+        <div class='champions'>Champions: {{ deed.accomplishments.length }}</div>
+        <button class='accomplished' @click='accomplish_deed(deed.id)'>Accomplished</button>
     </div>
 </div>

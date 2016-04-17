@@ -45,6 +45,12 @@ export default Vue.extend({
     events: {
         insert_deed(deed) {
             this.deeds.push(deed)
+            return true
+        },
+        update_deed(deed) {
+            const index = this.deeds.findIndex(d => d.id === deed.id)
+            this.deeds.$set(index, deed)
+            return true
         },
         delete_deed(id) {
             const index = this.deeds.findIndex(d => d.id === id)
