@@ -20,6 +20,8 @@ System.config({
     "core-js": "npm:core-js@1.2.6",
     "css": "github:systemjs/plugin-css@0.1.20",
     "font-awesome": "npm:font-awesome@4.5.0",
+    "jstimezonedetect": "npm:jstimezonedetect@1.0.6",
+    "moment": "npm:moment@2.12.0",
     "seedrandom": "npm:seedrandom@2.4.2",
     "text": "github:systemjs/plugin-text@0.0.3",
     "uglifyjs": "npm:uglifyjs@2.4.10",

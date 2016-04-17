@@ -1,6 +1,7 @@
 import './challenge.css!'
 import tmpl from './challenge.html!text'
 import Vue from 'vue'
+import timezone from 'jstimezonedetect'
 
 export default Vue.extend({
     template: tmpl,
@@ -20,7 +21,10 @@ export default Vue.extend({
 
     },
     ready() {
-        this.control.send('get_deeds', {limit: 2}, this.got_deeds)
+        this.control.send('get_deeds', {
+            limit: 2,
+            timezone: timezone.determine().name(),
+        }, this.got_deeds)
     },
     methods: {
         got_deeds(request, response) {
