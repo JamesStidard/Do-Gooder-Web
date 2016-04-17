@@ -20,7 +20,7 @@ export default Vue.extend({
 
     },
     ready() {
-        this.control.send('get_deeds', {}, this.got_deeds)
+        this.control.send('get_deeds', {limit: 2}, this.got_deeds)
     },
     methods: {
         got_deeds(request, response) {
