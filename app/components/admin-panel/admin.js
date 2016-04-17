@@ -33,6 +33,7 @@ export default Vue.extend({
             }
         },
         add_deed() {
+            this.error = ''
             this.control.send('insert_deed', this.new_deed, this.added_deed)
         },
         added_deed(request, response) {

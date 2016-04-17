@@ -29,6 +29,7 @@ export default Vue.extend({
     },
     methods: {
         get_deeds() {
+            this.error = ''
             this.deeds = []
             this.control.send('get_deeds', TODAYS_DEEDS, this.got_deeds)
         },
@@ -42,6 +43,7 @@ export default Vue.extend({
             }
         },
         accomplish_deed(id) {
+            this.error = ''
             this.control.send('accomplish_deed', {id}, this.accomplished_deed)
         },
         accomplished_deed(request, response) {
