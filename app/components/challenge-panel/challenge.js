@@ -12,7 +12,7 @@ export default Vue.extend({
             error: '',
             deeds: [],
             new_deed: {
-                description:''
+                description:'',
             },
         }
     },
@@ -34,10 +34,11 @@ export default Vue.extend({
         },
         add_deed() {
             this.control.send('insert_deed', this.new_deed, this.added_deed)
-        }
+        },
         added_deed(request, response) {
+            this.error=response.error
             this.new_deed.description=''
-        }
+        },
     },
     events: {
         insert_deed(deed) {
