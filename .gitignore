@@ -1,5 +1,4 @@
 jspm_packages
 node_modules
 consts.js
-build
-
+built

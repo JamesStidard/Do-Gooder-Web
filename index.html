@@ -38,7 +38,7 @@
                     <a v-link="{ path: '/' }">Today's Deeds</a>
                     <a v-link="{ path: '/admin' }">Admin</a>
                     <a v-if='!user' v-link="{ path: '/sign-in' }">Sign In</a>
-                    <a v-if='user' @click='sign_out'>{{ user.username }} (Sign Out)</a>
+                    <!-- <a v-if='user' @click='sign_out'>{{ user.username }} (Sign Out)</a> -->
                 </div>
 
                 <router-view :control='control'></router-view>
