@@ -25,7 +25,7 @@
 
 		<!-- Google font -->
 		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-		
+
 	</head>
 	<body>
 
@@ -33,7 +33,14 @@
 
 		<div id="Do-Gooder" class="main" v-cloak>
             <template v-if='loaded'>
-                <challenge-panel :control='control'></challenge-panel>
+
+                <div class='navigation'>
+                    <a v-link="{ path: '/' }">Today's Challenges</a>
+                    <a v-link="{ path: '/admin' }">Admin</a>
+                </div>
+
+                <router-view :control='control'></router-view>
+
             </template>
 		</div>
 

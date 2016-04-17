@@ -3,20 +3,28 @@ import VueRouter from 'vue-router'
 
 import {debug} from '../consts'
 
+import ChallengePanel from './components/challenge-panel/challenge'
+import AdminPanel from './components/admin-panel/admin'
+
 
 Vue.use(VueRouter)
 Vue.config.debug = debug
 
 const router = new VueRouter({
-    history: true,
+    history: false,
 })
 
 router.map({
-    // '/path': {
-    //     name: 'Name',
-    //     component: Compoent,
-    //     props: ['something'],
-    // },
+    '/': {
+        name: 'challenge',
+        component: ChallengePanel,
+        props: ['control'],
+    },
+    '/admin': {
+        name: 'admin',
+        component: AdminPanel,
+        props: ['control'],
+    },
 })
 
 export default router

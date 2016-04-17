@@ -1,7 +1,6 @@
-import './challenge.css!'
-import tmpl from './challenge.html!text'
+import './admin.css!'
+import tmpl from './admin.html!text'
 import Vue from 'vue'
-import timezone from 'jstimezonedetect'
 
 export default Vue.extend({
     template: tmpl,
@@ -12,16 +11,16 @@ export default Vue.extend({
         return {
             error: '',
             deeds: [],
+            new_deed: {
+                description:'',
+            },
         }
     },
     computed: {
 
     },
     ready() {
-        this.control.send('get_deeds', {
-            limit: 2,
-            timezone: timezone.determine().name(),
-        }, this.got_deeds)
+        this.control.send('get_deeds', {}, this.got_deeds)
     },
     methods: {
         got_deeds(request, response) {
@@ -33,16 +32,23 @@ export default Vue.extend({
                 this.error = "Couldn't parse server reponse."
             }
         },
+        add_deed() {
+            this.control.send('insert_deed', this.new_deed, this.added_deed)
+        },
+        added_deed(request, response) {
+            this.error = response.error
+            if (!this.error) {
+                this.new_deed.description=''
+            }
+        },
     },
     events: {
         insert_deed(deed) {
             this.deeds.push(deed)
-            return true
         },
         delete_deed(id) {
             const index = this.deeds.findIndex(d => d.id === id)
             this.deeds.splice(index, 1)
-            return true
         },
     },
 })

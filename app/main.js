@@ -5,13 +5,8 @@ import router from './router'
 import {ws_url} from '../consts'
 import Control from './utils/control'
 
-import ChallengePanel from './components/challenge-panel/challenge'
-
 
 router.start({
-    components: {
-        'challenge-panel': ChallengePanel,
-    },
     data() {
         return {
             control: null,
