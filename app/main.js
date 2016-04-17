@@ -26,6 +26,12 @@ router.start({
         this.ready = true
     },
     methods: {
-
+        sign_out() {
+            this.control.send('sign_out', {}, this.signed_out)
+        },
+        signed_out() {
+            this.user = null
+            this.$broadcast('signed_out')
+        },
     },
 }, 'body')

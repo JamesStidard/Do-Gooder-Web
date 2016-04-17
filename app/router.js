@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import {debug} from '../consts'
 
+import SignInPanel from './components/sign-in-panel/sign-in'
 import ChallengePanel from './components/challenge-panel/challenge'
 import AdminPanel from './components/admin-panel/admin'
 
@@ -24,6 +25,11 @@ router.map({
         name: 'admin',
         component: AdminPanel,
         props: ['control'],
+    },
+    '/sign-in': {
+        name: 'sign-in',
+        component: SignInPanel,
+        props: ['control', 'user'],
     },
 })
 

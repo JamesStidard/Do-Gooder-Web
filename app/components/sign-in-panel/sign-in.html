@@ -1,0 +1,13 @@
+<div class='SignInPanel'>
+    <div v-if='error' class='error'>{{ error }}</div>
+
+    <input v-model='credentials.email' placeholder='email'/>
+    <input v-model='credentials.password' placeholder='password'/>
+
+    <button
+        @keyup.enter='sign_in'
+        @click='sign_in'
+        :disabled='disabled'>
+            {{ sign_in_text }}
+    </button>
+</div>
