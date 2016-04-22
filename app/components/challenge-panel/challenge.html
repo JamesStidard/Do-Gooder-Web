@@ -6,6 +6,7 @@
     <div v-for='deed in deeds' track-by='id'>
         <div class='description'>{{ deed.description }}</div>
         <div class='champions'>Champions: {{ deed.accomplishments.length }}</div>
-        <button class='accomplished' @click='accomplish_deed(deed.id)'>Accomplished</button>
+        <div v-if='deed.percent_of_votes' class='percentage'>{{deed.percent_of_votes}}%</div>
+        <button v-else class='accomplished' @click='accomplish_deed(deed.id)'>Accomplished</button>
     </div>
 </div>
