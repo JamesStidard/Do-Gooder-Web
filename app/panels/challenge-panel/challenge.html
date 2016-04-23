@@ -10,12 +10,14 @@
             <div class='champions'>Champions: {{ deed.accomplished_count }}</div>
             <percentage-widget
                 :percentage='percentage_of_champains(deed.accomplished_count)'
-                :primary_color='white'
-                :secondary_color='secondary_color($index)'
-                :background_color='primary_color($index)'
+                :circle_size='100'
+                :insert_size='90'
                 :clockwise='false'
                 :offset='90'
-                :semicircle='true'>
+                :semicircle='true'
+                :primary_color='white'
+                :secondary_color='secondary_color($index)'
+                :background_color='primary_color($index)'>
             </percentage-widget>
         </template>
 
