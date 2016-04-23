@@ -22,6 +22,11 @@
 }
 
 .ChallengePanel
-percentage-widget {
-    
+button {
+    padding: 16px;
+    border: none;
+
+    color: white;
+
+    cursor: pointer;
 }

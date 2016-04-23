@@ -3,7 +3,7 @@
         ERROR: {{ error }}
     </div>
 
-    <div v-for='deed in deeds' track-by='id' class='deed-column' v-bind:style="{width: column_width, backgroundColor: primary_color($index)}">
+    <div v-for='deed in deeds' track-by='id' class='deed-column' v-bind:style="{width: column_width, background: background($index)}">
 
         <template v-if='accomplished_deed'>
             <div class='description'>{{ deed.description }}</div>
@@ -11,7 +11,7 @@
             <percentage-widget
                 :percentage='percentage_of_champains(deed.accomplished_count)'
                 :circle_size='100'
-                :insert_size='90'
+                :insert_size='85'
                 :clockwise='false'
                 :offset='90'
                 :semicircle='true'
@@ -23,7 +23,7 @@
 
         <template v-else>
             <div class='description'>{{ deed.description }}</div>
-            <button v-else class='accomplished' @click='accomplish_deed(deed.id)'>Accomplished</button>
+            <button v-else class='accomplished' @click='accomplish_deed(deed.id)' v-bind:style='{backgroundColor: secondary_color($index)}'>COMPLETE</button>
         </template>
 
     </div>

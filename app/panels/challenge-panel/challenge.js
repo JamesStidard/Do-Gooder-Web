@@ -17,6 +17,16 @@ export default Vue.extend({
         return {
             error: '',
             deeds: [],
+            hot_colors: {
+                light: 'rgb(252, 145, 66)',
+                medium: 'rgb(250, 125, 62)',
+                heavy: 'rgb(244, 66, 55)',
+            },
+            cool_colors: {
+                light: 'rgb(0, 172, 222)',
+                medium: 'rgb(0, 149, 230)',
+                heavy: 'rgb(0, 120, 184)',
+            },
         }
     },
     computed: {
@@ -59,10 +69,15 @@ export default Vue.extend({
             return 100 * champains / this.total_champains
         },
         primary_color(index) {
-            return index % 2 ? 'rgb(239, 147, 63)' : 'rgb(76, 171, 223)'
+            return index % 2 ? this.hot_colors.light : this.cool_colors.light
         },
         secondary_color(index) {
-            return index % 2 ? 'rgb(247, 68, 56)' : 'rgb(23, 93, 130)'
+            return index % 2 ? this.hot_colors.heavy : this.cool_colors.heavy
+        },
+        background(index) {
+            return index % 2 ?
+                'linear-gradient(180deg, ' + this.hot_colors.light + ' 70%, ' + this.hot_colors.medium + ' 30%)' :
+                'linear-gradient(180deg, ' + this.cool_colors.light + ' 70%, ' + this.cool_colors.medium + ' 30%)'
         },
     },
     events: {
