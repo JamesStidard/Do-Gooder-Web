@@ -5,7 +5,7 @@
 
     <div v-for='deed in deeds' track-by='id' class='deed-column' v-bind:style="{width: column_width, backgroundColor: primary_color($index)}">
 
-        <template v-if='accomplish_deed'>
+        <template v-if='accomplished_deed'>
             <div class='description'>{{ deed.description }}</div>
             <div class='champions'>Champions: {{ deed.accomplished_count }}</div>
             <percentage-widget
