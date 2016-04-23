@@ -33,6 +33,11 @@
         </div>
     </div>
     <div class='inset' v-bind:style='[inset_style]'>
-        <!-- <div class='percentage'></div> -->
+        <div
+            v-if='show_text'
+            class='percentage'
+            v-bind:style='[percentage_text_style]'>
+            <div class='numbers' v-bind:style='[numbers_style]'><span v-for='n in numbers' v-bind:style='span_style'>{{n}}%</span></div>
+        </div>
     </div>
 </div>

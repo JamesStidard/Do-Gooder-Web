@@ -8,7 +8,6 @@
         <template v-if='accomplish_deed'>
             <div class='description'>{{ deed.description }}</div>
             <div class='champions'>Champions: {{ deed.accomplished_count }}</div>
-            <div class='percentage'>{{percentage_of_champains(deed.accomplished_count)}}%</div>
             <percentage-widget
                 :percentage='percentage_of_champains(deed.accomplished_count)'
                 :primary_color='white'
