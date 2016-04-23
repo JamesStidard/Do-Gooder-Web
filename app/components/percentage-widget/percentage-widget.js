@@ -32,6 +32,14 @@ export default Vue.extend({
             type: Boolean,
             default: true,
         },
+        offset: {
+            type: Number,
+            default: 0,
+        },
+        semicircle: {
+            type: Boolean,
+            default: false,
+        },
     },
     computed: {
         radial_progress_style() {
@@ -42,7 +50,7 @@ export default Vue.extend({
                 'border-radius': '50%',
                 'background-color': this.secondary_color,
                 'position': 'absolute',
-                'transform': 'scaleX(' + scale + ')',
+                'transform': 'scaleX(' + scale + ') rotate(' + this.offset + 'deg)',
             }
         },
         mask_fill_style() {
@@ -61,13 +69,15 @@ export default Vue.extend({
             }
         },
         rotation() {
+            const full_size = this.semicircle ? 0.9 : 1.8
             return {
-                'transform': 'rotate(' + this.percentage * 1.8 + 'deg)',
+                'transform': 'rotate(' + this.percentage * full_size + 'deg)',
             }
         },
         fix_rotation() {
+            const full_size = this.semicircle ? 1.8 : 3.6
             return {
-                'transform': 'rotate(' + this.percentage * 3.6 + 'deg)',
+                'transform': 'rotate(' + this.percentage * full_size + 'deg)',
             }
         },
         fill_style() {
@@ -85,6 +95,15 @@ export default Vue.extend({
                 'margin-top': (this.circle_size - this.insert_size) / 2 + 'px',
                 'background-color': this.background_color,
                 'border-radius': '50%',
+            }
+        },
+        mask_semicircle_style() {
+            return {
+                'width': this.circle_size + 'px',
+                'height': this.circle_size + 'px',
+                'position': 'absolute',
+                'background-color': this.background_color,
+                'clip': 'rect(0px, ' + this.circle_size/2 + 'px, ' + this.circle_size + 'px, 0px)',
             }
         },
     },

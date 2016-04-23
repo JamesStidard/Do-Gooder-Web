@@ -25,7 +25,14 @@
                     v-bind:style='[mask_fill_style, fill_style, fix_rotation]'>
                 </div>
             </div>
+            <div
+                v-if='semicircle'
+                class='mask semicircle'
+                v-bind:style='[mask_semicircle_style]'>
+            </div>
         </div>
     </div>
-    <div class='inset' v-bind:style='[inset_style]'></div>
+    <div class='inset' v-bind:style='[inset_style]'>
+        <!-- <div class='percentage'></div> -->
+    </div>
 </div>
