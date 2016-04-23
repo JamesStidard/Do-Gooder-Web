@@ -7,6 +7,7 @@
       "text": "github:systemjs/plugin-text@^0.0.3",
       "uglifyjs": "npm:uglifyjs@^2.4.10",
       "vue": "npm:vue@^1.0.7",
+      "vue-resize-mixin": "npm:vue-resize-mixin@^1.0.1",
       "vue-router": "npm:vue-router@^0.7.5"
     },
     "devDependencies": {

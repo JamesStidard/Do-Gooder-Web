@@ -24,6 +24,7 @@ System.config({
     "text": "github:systemjs/plugin-text@0.0.3",
     "uglifyjs": "npm:uglifyjs@2.4.10",
     "vue": "npm:vue@1.0.20",
+    "vue-resize-mixin": "npm:vue-resize-mixin@1.0.1",
     "vue-router": "npm:vue-router@0.7.11",
     "github:jspm/nodelibs-assert@0.1.0": {
       "assert": "npm:assert@1.3.0"
@@ -118,6 +119,9 @@ System.config({
     },
     "npm:core-util-is@1.0.2": {
       "buffer": "github:jspm/nodelibs-buffer@0.1.0"
+    },
+    "npm:debounce@1.0.0": {
+      "date-now": "npm:date-now@1.0.1"
     },
     "npm:envify@3.4.0": {
       "jstransform": "npm:jstransform@10.1.0",
@@ -227,9 +231,16 @@ System.config({
     "npm:vm-browserify@0.0.4": {
       "indexof": "npm:indexof@0.0.1"
     },
+    "npm:vue-resize-mixin@1.0.1": {
+      "windowsill": "npm:windowsill@1.0.7"
+    },
     "npm:vue@1.0.20": {
       "envify": "npm:envify@3.4.0",
       "process": "github:jspm/nodelibs-process@0.1.2"
+    },
+    "npm:windowsill@1.0.7": {
+      "debounce": "npm:debounce@1.0.0",
+      "tiny-emitter": "npm:tiny-emitter@1.0.2"
     },
     "npm:yargs@1.3.3": {
       "fs": "github:jspm/nodelibs-fs@0.1.2",

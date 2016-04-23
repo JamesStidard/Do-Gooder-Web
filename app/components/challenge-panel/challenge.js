@@ -24,6 +24,11 @@ export default Vue.extend({
                              .map(d => d.accomplished_count)
                              .reduce((a, b) => a + b, 0)
         },
+        column_width() {
+            return {
+                width: 100 / this.deeds.length + '%',
+            }
+        },
     },
     ready() {
         this.get_deeds()

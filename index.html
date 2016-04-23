@@ -41,7 +41,7 @@
                     <a v-else @click='sign_out'>{{ user.username }} (Sign Out)</a>
                 </div>
 
-                <router-view :control='control'></router-view>
+                <router-view :control='control' v-bind:style='{height: window_size.height + "px"}'></router-view>
 
             </template>
 		</div>
