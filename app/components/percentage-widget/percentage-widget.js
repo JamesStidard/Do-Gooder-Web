@@ -13,10 +13,10 @@ export default Vue.extend({
             type: Number,
             default: 100,
         },
-        primary_color: {
+        primary_colour: {
             default: 'white',
         },
-        secondary_color: {
+        secondary_colour: {
             default: 'black',
         },
         transition_speed: {
@@ -29,66 +29,33 @@ export default Vue.extend({
                 'width': this.circle_size + 'px',
                 'height': this.circle_size + 'px',
                 'border-radius': '50%',
-                'background-color': this.secondary_color,
+                'background-color': this.secondary_colour,
             }
         },
-        circle_style() {
-            return {
-
-            }
-        },
-        mask_style_left() {
+        mask_fill_style() {
             return {
                 'width': this.circle_size + 'px',
                 'height': this.circle_size + 'px',
                 'position': 'absolute',
                 'border-radius': '50%',
-                'background-color': this.secondary_color,
-                'clip': 'rect(0px, ' + this.circle_size + 'px, ' + this.circle_size + 'px, ' + this.circle_size / 2 + 'px)',
-                'backface-visibility': 'hidden', // prevent Chrome aliasing on transform transition
-            }
-        },
-        mask_style_right() {
-            return {
-                'width': this.circle_size + 'px',
-                'height': this.circle_size + 'px',
-                'position': 'absolute',
-                'border-radius': '50%',
-                'background-color': this.secondary_color,
-                'clip': 'rect(0px, ' + this.circle_size / 2 + 'px, ' + this.circle_size + 'px, ' + '0px)',
-                'backface-visibility': 'hidden', // prevent Chrome aliasing on transform transition
-            }
-        },
-        fill_style_left() {
-            // Max fill to 180 deg
-            const fill = Math.min(3.6 * this.percentage, 180)
-
-            return {
-                'width': this.circle_size + 'px',
-                'height': this.circle_size + 'px',
-                'position': 'absolute',
-                'border-radius': '50%',
-                'background-color': this.primary_color,
-                'transform': 'rotate(' + fill + 'deg)', // 360 deg is 100%
                 'transition': 'transform ' + this.transition_speed + 's',
+                'backface-visibility': 'hidden', // prevent Chrome aliasing on transform transition
+            }
+        },
+        mask_style() {
+            return {
+                'clip': 'rect(0px, ' + this.circle_size + 'px, ' + this.circle_size + 'px, ' + this.circle_size / 2 + 'px)',
+            }
+        },
+        rotation() {
+            return {
+                'transform': 'rotate(' + this.percentage * 1.8 + 'deg)',
+            }
+        },
+        fill_style() {
+            return {
+                'background-color': this.primary_colour,
                 'clip': 'rect(0px, ' + this.circle_size/2 + 'px, ' + this.circle_size + 'px, 0px)',
-                'backface-visibility': 'hidden', // prevent Chrome aliasing on transform transition
-            }
-        },
-        fill_style_right() {
-            // Max fill to 180 deg
-            const fill = Math.min(3.6 * this.percentage, 180)
-
-            return {
-                'width': this.circle_size + 'px',
-                'height': this.circle_size + 'px',
-                'position': 'absolute',
-                'border-radius': '50%',
-                'background-color': this.primary_color,
-                'transform': 'rotate(' + fill + 'deg)', // 360 deg is 100%
-                'transition': 'transform ' + this.transition_speed + 's',
-                'clip': 'rect(0px, ' + this.circle_size + 'px, ' + this.circle_size + 'px, ' + this.circle_size / 2 + 'px)',
-                'backface-visibility': 'hidden', // prevent Chrome aliasing on transform transition
             }
         },
     },

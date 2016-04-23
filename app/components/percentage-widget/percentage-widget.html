@@ -2,24 +2,22 @@
     <div
         class='radial-progress'
         v-bind:style='radial_progress_style'>
-        <div
-            class='circle'
-            v-bind:style='circle_style'>
+        <div class='circle'>
             <!-- Mask to hide the left half of the fill when it's below 50% -->
             <div
-                class='mask left'
-                v-bind:style='mask_style_left'>
+                class='mask full'
+                v-bind:style='[mask_fill_style, mask_style, rotation]'>
                 <div
                     class='fill'
-                    v-bind:style='fill_style_left'>
+                    v-bind:style='[mask_fill_style, fill_style, rotation]'>
                 </div>
             </div>
             <div
-                class='mask right'
-                v-bind:style='mask_style_right'>
+                class='mask half'
+                v-bind:style='[mask_fill_style, mask_style]'>
                 <div
                     class='fill'
-                    v-bind:style='fill_style_right'>
+                    v-bind:style='[mask_fill_style, fill_style, rotation]'>
                 </div>
             </div>
         </div>
