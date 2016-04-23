@@ -52,6 +52,11 @@ export default Vue.extend({
                 'transform': 'rotate(' + this.percentage * 1.8 + 'deg)',
             }
         },
+        fix_rotation() {
+            return {
+                'transform': 'rotate(' + this.percentage * 3.6 + 'deg)',
+            }
+        },
         fill_style() {
             return {
                 'background-color': this.primary_colour,

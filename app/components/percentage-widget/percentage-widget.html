@@ -19,6 +19,11 @@
                     class='fill'
                     v-bind:style='[mask_fill_style, fill_style, rotation]'>
                 </div>
+                <!-- Patches tear seem between two fills -->
+                <div
+                    class='fill fix'
+                    v-bind:style='[mask_fill_style, fill_style, fix_rotation]'>
+                </div>
             </div>
         </div>
     </div>
