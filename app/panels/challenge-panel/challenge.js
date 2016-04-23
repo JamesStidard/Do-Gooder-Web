@@ -29,9 +29,7 @@ export default Vue.extend({
                              .reduce((a, b) => a + b, 0)
         },
         column_width() {
-            return {
-                width: 100 / this.deeds.length + '%',
-            }
+            return 100 / this.deeds.length + '%'
         },
     },
     ready() {
@@ -59,6 +57,12 @@ export default Vue.extend({
         },
         percentage_of_champains(champains) {
             return 100 * champains / this.total_champains
+        },
+        primary_color(index) {
+            return index % 2 ? 'rgb(239, 147, 63)' : 'rgb(76, 171, 223)'
+        },
+        secondary_color(index) {
+            return index % 2 ? 'rgb(247, 68, 56)' : 'rgb(23, 93, 130)'
         },
     },
     events: {
