@@ -9,6 +9,9 @@ export default Vue.extend({
         percentage: {
             type: Number,
             required: true,
+            coerce(value) {
+                return Math.round(value)
+            },
         },
         circle_size: {
             type: Number,
