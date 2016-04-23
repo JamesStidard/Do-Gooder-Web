@@ -1,0 +1,43 @@
+<div class='PercentageWidget'>
+    <div
+        class='radial-progress'
+        v-bind:style='radial_progress_style'>
+        <div class='circle'>
+            <!-- Mask to hide the left half of the fill when it's below 50% -->
+            <div
+                class='mask full'
+                v-bind:style='[mask_fill_style, mask_style, rotation]'>
+                <div
+                    class='fill'
+                    v-bind:style='[mask_fill_style, fill_style, rotation]'>
+                </div>
+            </div>
+            <div
+                class='mask half'
+                v-bind:style='[mask_fill_style, mask_style]'>
+                <div
+                    class='fill'
+                    v-bind:style='[mask_fill_style, fill_style, rotation]'>
+                </div>
+                <!-- Patches tear seem between two fills -->
+                <div
+                    class='fill fix'
+                    v-bind:style='[mask_fill_style, fill_style, fix_rotation]'>
+                </div>
+            </div>
+            <div
+                v-if='semicircle'
+                class='mask semicircle'
+                v-bind:style='[mask_semicircle_style]'>
+            </div>
+        </div>
+    </div>
+    <div class='inset' v-bind:style='[inset_style]'>
+        <div
+            v-if='show_text'
+            class='percentage'
+            v-bind:style='[percentage_text_style]'>
+            <div class='numbers' v-bind:style='[numbers_style]'><span v-for='n in numbers' v-bind:style='span_style'>{{n}}%</span></div>
+        </div>
+    </div>
+</div>

@@ -3,12 +3,20 @@
         ERROR: {{ error }}
     </div>
 
-    <div v-for='deed in deeds' track-by='id' class='deed-column' v-bind:style="column_width">
+    <div v-for='deed in deeds' track-by='id' class='deed-column' v-bind:style="{width: column_width, backgroundColor: primary_color($index)}">
 
         <template v-if='accomplish_deed'>
             <div class='description'>{{ deed.description }}</div>
             <div class='champions'>Champions: {{ deed.accomplished_count }}</div>
-            <div class='percentage'>{{percentage_of_champains(deed.accomplished_count)}}%</div>
+            <percentage-widget
+                :percentage='percentage_of_champains(deed.accomplished_count)'
+                :primary_color='white'
+                :secondary_color='secondary_color($index)'
+                :background_color='primary_color($index)'
+                :clockwise='false'
+                :offset='90'
+                :semicircle='true'>
+            </percentage-widget>
         </template>
 
         <template v-else>
