@@ -9,6 +9,9 @@
             <div class='description'>{{ deed.description }}</div>
             <div class='champions'>Champions: {{ deed.accomplished_count }}</div>
             <div class='percentage'>{{percentage_of_champains(deed.accomplished_count)}}%</div>
+            <percentage-widget
+                :percentage='15'>
+            </percentage-widget>
         </template>
 
         <template v-else>

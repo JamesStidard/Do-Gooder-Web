@@ -1,11 +1,15 @@
 import './challenge.css!'
 import tmpl from './challenge.html!text'
 import Vue from 'vue'
+import PercentageWidget from 'app/components/percentage-widget/percentage-widget'
 import tz from 'jstimezonedetect'
 
 
 export default Vue.extend({
     template: tmpl,
+    components: {
+        'percentage-widget': PercentageWidget,
+    },
     props: [
         "control",
     ],

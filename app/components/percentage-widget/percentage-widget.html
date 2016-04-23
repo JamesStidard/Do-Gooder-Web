@@ -1,0 +1,27 @@
+<div class='PercentageWidget'>
+    <div
+        class='radial-progress'
+        v-bind:style='radial_progress_style'>
+        <div
+            class='circle'
+            v-bind:style='circle_style'>
+            <!-- Mask to hide the left half of the fill when it's below 50% -->
+            <div
+                class='mask left'
+                v-bind:style='mask_style_left'>
+                <div
+                    class='fill'
+                    v-bind:style='fill_style_left'>
+                </div>
+            </div>
+            <div
+                class='mask right'
+                v-bind:style='mask_style_right'>
+                <div
+                    class='fill'
+                    v-bind:style='fill_style_right'>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

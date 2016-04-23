@@ -3,9 +3,9 @@ import VueRouter from 'vue-router'
 
 import {debug} from '../consts'
 
-import SignInPanel from './components/sign-in-panel/sign-in'
-import ChallengePanel from './components/challenge-panel/challenge'
-import AdminPanel from './components/admin-panel/admin'
+import SignInPanel from './panels/sign-in-panel/sign-in'
+import ChallengePanel from './panels/challenge-panel/challenge'
+import AdminPanel from './panels/admin-panel/admin'
 
 
 Vue.use(VueRouter)
