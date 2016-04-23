@@ -3,10 +3,14 @@
         ERROR: {{ error }}
     </div>
 
-    <div v-for='deed in deeds' track-by='id'>
+    <div v-if='!accomplished_deed' v-for='deed in deeds' track-by='id'>
         <div class='description'>{{ deed.description }}</div>
-        <div class='champions'>Champions: {{ deed.accomplishments.length }}</div>
-        <div v-if='deed.percent_of_votes' class='percentage'>{{deed.percent_of_votes}}%</div>
         <button v-else class='accomplished' @click='accomplish_deed(deed.id)'>Accomplished</button>
+    </div>
+
+    <div v-else v-for='deed in deeds' track-by='id'>
+        <div class='description'>{{ deed.description }}</div>
+        <div class='champions'>Champions: {{ deed.accomplished_count }}</div>
+        <div class='percentage'>{{percentage_of_champains(deed.accomplished_count)}}%</div>
     </div>
 </div>

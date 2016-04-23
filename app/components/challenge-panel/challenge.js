@@ -16,7 +16,14 @@ export default Vue.extend({
         }
     },
     computed: {
-
+        accomplished_deed() {
+            return this.deeds.some(d => d.accomplished)
+        },
+        total_champains() {
+            return this.deeds.filter(d => d.accomplished_count)
+                             .map(d => d.accomplished_count)
+                             .reduce((a, b) => a + b, 0)
+        },
     },
     ready() {
         this.get_deeds()
@@ -28,6 +35,10 @@ export default Vue.extend({
             const timezone = tz.determine().name()
             this.control.send('get_todays_deeds', {timezone}, this.got_deeds)
         },
+        accomplish_deed(deed_id) {
+            this.error = ''
+            this.control.send('accomplish_deed', {deed_id}, this.got_deeds)
+        },
         got_deeds(request, response) {
             try {
                 this.error = response.error
@@ -37,12 +48,8 @@ export default Vue.extend({
                 this.error = "Couldn't parse server reponse."
             }
         },
-        accomplish_deed(id) {
-            this.error = ''
-            this.control.send('accomplish_deed', {id}, this.accomplished_deed)
-        },
-        accomplished_deed(request, response) {
-            this.error = response.error
+        percentage_of_champains(champains) {
+            return 100 * champains / this.total_champains
         },
     },
     events: {
