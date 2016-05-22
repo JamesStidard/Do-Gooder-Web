@@ -38,6 +38,7 @@ System.import(control_url).then(({Control}) => {  // eslint-disable-line no-unde
                 user,
                 is_admin,
                 window_size,
+                auth_handshake_complete: state => state.auth_handshake_complete,
             },
             actions: {
                 sign_out,

@@ -12,6 +12,7 @@ const state = {
         height: window.innerHeight,
     },
     ws_status: null,
+    auth_handshake_complete: false,
     error: null,
     user: null,
     todays_deeds: [],
@@ -35,6 +36,7 @@ const mutations = {
         state.error = error
     },
     CURRENT_USER_SET(state, user) {
+        state.auth_handshake_complete = true
         state.user = user
     },
     MICRO_COOKIE_SET(state, cookie) {
@@ -56,6 +58,10 @@ const mutations = {
     DEED_DELETE(state, deed_id) {
         const index = state.deeds.findIndex(d => d.id === deed_id)
         if (index !== -1) state.deeds.splice(index, 1)
+    },
+    ACCOMPLISHMENT_INSERT(state, deed_id) {
+        const index = state.todays_deeds.findIndex(d => d.id === deed_id)
+        if (index !== -1) state.todays_deeds[index].accomplished_count++
     },
 }
 

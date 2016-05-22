@@ -70,3 +70,19 @@ export const delete_deed = function({dispatch}, id) {
             .catch(handle_error)
     })
 }
+
+export const insert_accomplishment = function({dispatch}, deed_id) {
+    return new Promise((resolve, reject) => {  // eslint-disable-line no-undef
+        const timezone     = tz.determine().name()
+        const handle_error = error => {
+            dispatch('ERROR_SET', error)
+            reject(error)
+        }
+        this.$control
+            .insert_accomplishment(deed_id, timezone)
+            .then(resolve)
+            .catch(handle_error)
+    })
+
+
+}

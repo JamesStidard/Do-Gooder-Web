@@ -5,7 +5,7 @@ import Vue from 'vue'
 import PercentageWidget from 'app/components/percentage-widget/percentage-widget'
 
 import { user, todays_deeds } from 'app/vuex/getters'
-import { get_todays_deeds } from 'app/vuex/actions'
+import { get_todays_deeds, insert_accomplishment } from 'app/vuex/actions'
 
 
 export default Vue.extend({
@@ -48,9 +48,13 @@ export default Vue.extend({
         },
         actions: {
             get_todays_deeds,
+            insert_accomplishment,
         },
     },
     methods: {
+        accomplish_deed(deed_id) {
+            this.insert_accomplishment(deed_id)
+        },
         percentage_of_champains(champains) {
             return 100 * champains / this.total_champains
         },
