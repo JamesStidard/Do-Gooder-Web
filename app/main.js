@@ -14,8 +14,6 @@ import ResizeMixin from 'vue-resize-mixin'
 
 import { control_url } from 'consts'
 
-import request from 'superagent'
-
 
 // –– Control
 System.import(control_url).then(({Control}) => {  // eslint-disable-line no-undef
@@ -30,7 +28,6 @@ System.import(control_url).then(({Control}) => {  // eslint-disable-line no-unde
         mixins: [ResizeMixin],
         ready() {
             // catch websocket broadcasts
-            debugger
             this.$control
                 .init((signal, message) => store.dispatch(signal, message))
                 .then(status => store.dispatch('WS_STATUS_SET', status))

@@ -1,11 +1,9 @@
 import tz from 'jstimezonedetect'
-import request from 'superagent'
 
 
 export const sign_in = function({dispatch}, {email, password}) {
     const set_current_user = user  => dispatch('CURRENT_USER_SET', user)
     const handle_error     = error => dispatch('ERROR_SET', error)
-    debugger
     this.$control
         .sign_in(email, password)
         .then(set_current_user)
