@@ -2,60 +2,35 @@ import './admin.css!'
 import tmpl from './admin.html!text'
 import Vue from 'vue'
 
+import { deeds } from 'app/vuex/getters'
+import { get_deeds, insert_deed, delete_deed } from 'app/vuex/actions'
+
 export default Vue.extend({
     template: tmpl,
-    props: [
-        "control",
-    ],
-    data() {
-        return {
-            error: '',
-            deeds: [],
-            new_deed: {
-                description:'',
-            },
-        }
-    },
+    data: () => ({
+        description:'',
+    }),
     computed: {
 
     },
     ready() {
-        this.control.send('get_deeds', {}, this.got_deeds)
+        this.get_deeds()
     },
     methods: {
-        got_deeds(request, response) {
-            try {
-                this.error = response.error
-                this.deeds = response.result
-            }
-            catch(error) {
-                this.error = "Couldn't parse server reponse."
-            }
-        },
-        add_deed() {
-            this.error = ''
-            this.control.send('insert_deed', this.new_deed, this.added_deed)
-        },
-        added_deed(request, response) {
-            this.error = response.error
-            if (!this.error) {
-                this.new_deed.description=''
-            }
+        create_deed() {
+            this.insert_deed(this.description)
+                .then(() => (this.description = ''))
+                .catch(error => (this.error = error.message))
         },
     },
-    events: {
-        insert_deed(deed) {
-            this.deeds.push(deed)
-            return true
+    vuex: {
+        getters: {
+            deeds,
         },
-        update_deed(deed) {
-            const index = this.deeds.findIndex(d => d.id === deed.id)
-            this.deeds.$set(index, deed)
-            return true
-        },
-        delete_deed(id) {
-            const index = this.deeds.findIndex(d => d.id === id)
-            this.deeds.splice(index, 1)
+        actions: {
+            get_deeds,
+            insert_deed,
+            delete_deed,
         },
     },
 })

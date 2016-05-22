@@ -1,48 +1,54 @@
+// CSS Imports
+// –– Root Styles
 import './main.css!'
 
+// JS Imports
+// –– Vue
+import Vue from 'vue'
 import router from './router'
+import store from 'app/vuex/store'
+import { window_size, user, is_admin } from 'app/vuex/getters'
+import { sign_out } from 'app/vuex/actions'
+
 import ResizeMixin from 'vue-resize-mixin'
 
-import {ws_url} from '../consts'
-import Control from './utils/control'
+import { control_url } from 'consts'
 
 
-router.start({
-    mixins: [ResizeMixin],
-    data() {
-        return {
-            window_size: {
-                width: window.innerWidth,
-                height: window.innerHeight,
+// –– Control
+System.import(control_url).then(({Control}) => {  // eslint-disable-line no-undef
+    Control.prototype.install = function(Vue) {
+        Vue.prototype.$control = this
+    }
+
+    Vue.use(new Control())
+
+    router.start({
+        store,
+        mixins: [ResizeMixin],
+        ready() {
+            // catch websocket broadcasts
+            this.$control
+                .init((signal, message) => store.dispatch(signal, message))
+                .then(status => store.dispatch('WS_STATUS_SET', status))
+                .catch(error => store.dispatch('WS_ERROR_SET', error))
+        },
+        vuex: {
+            getters: {
+                user,
+                is_admin,
+                window_size,
             },
-            control: null,
-            ready: false,
-            user: null,
-        }
-    },
-    computed: {
-        loaded() {
-            return this.ready && this.control._handshake_complete
+            actions: {
+                sign_out,
+            },
         },
-    },
-    created() {
-        this.control = new Control(this, ws_url)
-    },
-    ready() {
-        this.ready = true
-    },
-    methods: {
-        sign_out() {
-            this.control.send('sign_out', {}, this.signed_out)
+        events: {
+            resize: size => store.dispatch({
+                type: 'WINDOWS_SIZE_SET',
+                silent: true,
+                payload: size,
+            }),
         },
-        signed_out() {
-            this.user = null
-            this.$broadcast('signed_out')
-        },
-    },
-    events: {
-        resize(new_size) {
-            this.window_size = new_size
-        },
-    },
-}, 'body')
+    }, 'body')
+})
