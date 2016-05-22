@@ -1,8 +1,4 @@
 <div class='ChallengePanel'>
-    <div v-if='error' class='error'>
-        ERROR: {{ error }}
-    </div>
-
     <div v-for='deed in deeds' track-by='id' class='deed-column' v-bind:style="{width: column_width, background: background($index)}">
 
         <template v-if='accomplished_deed'>
@@ -23,7 +19,12 @@
 
         <template v-else>
             <div class='description'>{{ deed.description }}</div>
-            <button v-else class='accomplished' @click='accomplish_deed(deed.id)' v-bind:style='{backgroundColor: secondary_color($index)}'>COMPLETE</button>
+            <button
+                class='accomplished'
+                @click='user ? accomplish_deed(deed.id) : $router.go("/sign-in")'
+                v-bind:style='{backgroundColor: secondary_color($index)}'>
+                    COMPLETE
+            </button>
         </template>
 
     </div>

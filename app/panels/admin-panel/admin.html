@@ -1,11 +1,9 @@
 <div class='AdminPanel'>
-    <div v-if='error'>
-        ERROR: {{ error }}
-    </div>
+    <input placeholder='Add Deed' v-model='description' @keyup.enter='create_deed'/>
+    <button @click='create_deed'>Add</button>
 
-    <input placeholder='Add Deed' v-model='new_deed.description' @keyup.enter='add_deed'/>
-
-    <div v-for='deed in deeds' track-by='id'>
-        {{ deed.description }}
+    <div v-for='deed in deeds | orderBy "id" -1' track-by='id'>
+        <div>{{ deed.description }}</div>
+        <button @click='delete_deed(deed.id)'>delete</button>
     </div>
 </div>

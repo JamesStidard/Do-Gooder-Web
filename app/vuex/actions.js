@@ -38,11 +38,17 @@ export const get_deeds = function({dispatch}) {
         .catch(handle_error)
 }
 
-export const insert_deed = function({dispatch}, {description}) {
-    const handle_error = error => dispatch('ERROR_SET', error)
-    this.$control
-        .insert_deed(description)
-        .catch(handle_error)
+export const insert_deed = function({dispatch}, description) {
+    return new Promise((resolve, reject) => {  // eslint-disable-line no-undef
+        const handle_error = error => {
+            dispatch('ERROR_SET', error)
+            reject(error)
+        }
+        this.$control
+            .insert_deed(description)
+            .then(deed => resolve(deed))
+            .catch(handle_error)
+    })
 }
 
 export const update_deed = function({dispatch}, {description}) {
@@ -53,8 +59,14 @@ export const update_deed = function({dispatch}, {description}) {
 }
 
 export const delete_deed = function({dispatch}, id) {
-    const handle_error = error => dispatch('ERROR_SET', error)
-    this.$control
-        .delete_deed(id)
-        .catch(handle_error)
+    return new Promise((resolve, reject) => {  // eslint-disable-line no-undef
+        const handle_error = error => {
+            dispatch('ERROR_SET', error)
+            reject(error)
+        }
+        this.$control
+            .delete_deed(id)
+            .then(resolve)
+            .catch(handle_error)
+    })
 }

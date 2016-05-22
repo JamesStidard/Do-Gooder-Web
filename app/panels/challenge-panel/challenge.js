@@ -4,7 +4,7 @@ import tmpl from './challenge.html!text'
 import Vue from 'vue'
 import PercentageWidget from 'app/components/percentage-widget/percentage-widget'
 
-import { todays_deeds } from 'app/vuex/getters'
+import { user, todays_deeds } from 'app/vuex/getters'
 import { get_todays_deeds } from 'app/vuex/actions'
 
 
@@ -43,6 +43,7 @@ export default Vue.extend({
     },
     vuex: {
         getters: {
+            user,
             deeds: todays_deeds,
         },
         actions: {
