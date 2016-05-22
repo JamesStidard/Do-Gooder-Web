@@ -5,9 +5,9 @@
     <input v-model='credentials.password' placeholder='password'/>
 
     <button
-        @keyup.enter='sign_in'
-        @click='sign_in'
+        @keyup.enter='sign_in(credentials)'
+        @click='sign_in(credentials)'
         :disabled='disabled'>
-            {{ sign_in_text }}
+            Sign In
     </button>
 </div>

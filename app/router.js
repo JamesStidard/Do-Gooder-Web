@@ -1,11 +1,13 @@
+// JS Imports
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import {debug} from '../consts'
+import {debug} from 'consts'
 
-import SignInPanel from './panels/sign-in-panel/sign-in'
-import ChallengePanel from './panels/challenge-panel/challenge'
-import AdminPanel from './panels/admin-panel/admin'
+// -- Route Panels
+import SignInPanel from "app/panels/sign-in-panel/sign_in"
+import AdminPanel from "app/panels/admin-panel/admin"
+import ChallengePanel from "app/panels/challenge-panel/challenge"
 
 
 Vue.use(VueRouter)
@@ -17,20 +19,22 @@ const router = new VueRouter({
 
 router.map({
     '/': {
-        name: 'challenge',
+        name: "Today's Challenge",
         component: ChallengePanel,
-        props: ['control'],
-    },
-    '/admin': {
-        name: 'admin',
-        component: AdminPanel,
-        props: ['control'],
     },
     '/sign-in': {
-        name: 'sign-in',
+        name: 'Sign In',
         component: SignInPanel,
-        props: ['control', 'user'],
+    },
+    '/admin': {
+        name: 'Admin',
+        component: AdminPanel,
     },
 })
+
+// For debugging against the web console
+if (debug) {
+    window.app = router
+}
 
 export default router

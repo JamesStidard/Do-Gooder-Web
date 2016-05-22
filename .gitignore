@@ -1,4 +1,5 @@
 jspm_packages
 node_modules
 consts.js
+consts_dist.js
 built
